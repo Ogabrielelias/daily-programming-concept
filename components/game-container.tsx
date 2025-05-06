@@ -199,13 +199,13 @@ export function GameContainer() {
                   {hints.slice(0, hintsRevealed).map((hint, index) => (
                     <div
                       key={index}
-                      className="bg-white border border-slate-200 dark:bg-slate-700 dark:border-slate-600 p-3 rounded-md text-slate-700 dark:text-slate-200"
+                      className="bg-white/10 border border-slate-200 dark:bg-slate-700/10 dark:border-slate-600 p-3 rounded-md text-slate-700 dark:text-slate-200"
                     >
                       {hint}
                     </div>
                   ))}
                   {hintsRevealed === 0 && (
-                    <div className="bg-white border border-slate-200 dark:bg-slate-700 dark:border-slate-600 p-3 rounded-md text-slate-500 dark:text-slate-400 italic">
+                    <div className="bg-white/10 border border-slate-200 dark:bg-slate-700/10 dark:border-slate-600 p-3 rounded-md text-slate-500 dark:text-slate-400 italic">
                       Click "Reveal Hint" to get your first clue!
                     </div>
                   )}

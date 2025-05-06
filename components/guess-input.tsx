@@ -39,7 +39,7 @@ export function GuessInput({ onGuess, disabled = false }: GuessInputProps) {
             role="combobox"
             aria-expanded={open}
             disabled={disabled}
-            className="w-full justify-between bg-white border-slate-300 text-slate-700 hover:bg-slate-100 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:hover:bg-slate-600"
+            className="py-3 h-fit w-full justify-between bg-white border-slate-300 text-slate-700 hover:bg-slate-100 dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:hover:bg-slate-600"
           >
             {selectedValue
               ? programmingConcepts.find((concept) => concept.name.toLowerCase() === selectedValue.toLowerCase())?.name
@@ -69,9 +69,8 @@ export function GuessInput({ onGuess, disabled = false }: GuessInputProps) {
                         setSelectedValue(currentValue)
                         setOpen(false)
                       }}
-                      className={`text-slate-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700 ${
-                        selectedValue === concept.name.toLowerCase() ? "bg-slate-100 dark:bg-slate-700" : ""
-                      }`}
+                      className={`text-slate-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700 ${selectedValue === concept.name.toLowerCase() ? "bg-slate-100 dark:bg-slate-700" : ""
+                        }`}
                     >
                       <Check
                         className={cn(
