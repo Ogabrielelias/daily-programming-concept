@@ -1,4 +1,6 @@
-export const programmingConcepts = [
+import { Concept } from "@/components/game-container";
+
+export const programmingConcepts: Concept[] = [
   // Languages
   {
     name: "JavaScript",
