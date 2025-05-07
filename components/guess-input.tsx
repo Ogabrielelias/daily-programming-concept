@@ -59,6 +59,7 @@ export function GuessInput({ onGuess, disabled = false }: GuessInputProps) {
               <CommandEmpty className="text-slate-500 dark:text-slate-400">No concept found.</CommandEmpty>
               <CommandGroup>
                 {programmingConcepts
+                  .sort((a, b) => a.name.localeCompare(b.name))
                   .filter((concept) => concept.name.toLowerCase().includes(inputValue.toLowerCase()))
                   // Removed the .slice(0, 10) limitation here
                   .map((concept) => (
