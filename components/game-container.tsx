@@ -173,9 +173,9 @@ export function GameContainer() {
       ) : (
         <Card className="bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700">
           <CardContent className="p-6">
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4 w-full flex-wrap gap-4">
               <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Daily Concept</h2>
-              <div className="ml-3 flex items-center text-sm text-slate-500 dark:text-slate-400">
+              <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
                 <Calendar className="h-4 w-4 mr-1" />
                 {currentDate}
               </div>
