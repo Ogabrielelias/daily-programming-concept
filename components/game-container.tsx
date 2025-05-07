@@ -8,6 +8,7 @@ import { programmingConcepts } from "@/data/programming-concepts"
 import { GuessInput } from "@/components/guess-input"
 import { GuessList } from "@/components/guess-list"
 import { SuccessCelebration } from "@/components/success-celebration"
+import { usePostHog } from "posthog-js/react"
 
 export type Concept = {
   name: string
@@ -72,6 +73,8 @@ export function GameContainer() {
   const [hints, setHints] = useState<string[]>([])
   const [hintsRevealed, setHintsRevealed] = useState(0)
   const [currentDate, setCurrentDate] = useState<string>("")
+
+  const posthog = usePostHog()
 
   // Use a ref to track the current date key for comparison
   const currentDateKeyRef = useRef<string>(getDateKey(new Date()))
@@ -152,6 +155,7 @@ export function GameContainer() {
     setGuesses([newGuess, ...guesses])
 
     if (isCorrect) {
+      posthog.capture('$correctAnswer', { "$guesses": guesses.length })
       setShowSuccess(true)
     }
   }
