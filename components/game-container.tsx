@@ -155,7 +155,7 @@ export function GameContainer() {
     setGuesses([newGuess, ...guesses])
 
     if (isCorrect) {
-      posthog.capture('$correctAnswer', { "$guesses": guesses.length })
+      posthog.capture('$correctAnswer', { "$guessesQty": guesses.length, "$guessesList": guesses.map(guess => guess.name), "$hintsQty": hintsRevealed })
       setShowSuccess(true)
     }
   }
