@@ -134,7 +134,7 @@ export function GameContainer() {
       `It's related to ${formatList(concept.relatedTech)}`,
       `Commonly used for ${formatList(concept.useCases)}`,
       `It's keys features are ${formatList(concept.keyFeatures)}`,
-      `Creatd by ${concept.creator}`,
+      `Created by ${concept.creator}`,
       concept.description,
       `Word Skeleton: ${concept.name.split("").map((char, i) => {
         if (i == 0) {
