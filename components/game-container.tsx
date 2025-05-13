@@ -9,14 +9,21 @@ import { GuessInput } from "@/components/guess-input"
 import { GuessList } from "@/components/guess-list"
 import { SuccessCelebration } from "@/components/success-celebration"
 import { usePostHog } from "posthog-js/react"
+import { formatList, toTitleCase } from "@/lib/utils"
 
 export type Concept = {
-  name: string
-  category: "language" | "framework" | "concept"
-  level: "high" | "medium" | "low"
-  paradigm: string
-  yearCreated: number
-  description: string
+  name: string;
+  category: string;
+  level: string;
+  paradigm: string;
+  yearCreated: number;
+  description: string;
+  creator: string;
+  useCases: string[];
+  relatedTech: string[];
+  popularity: string;
+  learningCurve: string;
+  keyFeatures: string[];
 }
 
 export type Guess = {
@@ -123,11 +130,24 @@ export function GameContainer() {
 
     // Generate hints
     const generatedHints = [
-      `Created in the ${Math.floor(concept.yearCreated / 10) * 10}s`,
-      `Associated with ${concept.paradigm} paradigm`,
-      `It's a ${concept.category}`,
-      `It's considered ${concept.level}-level`,
+      `${toTitleCase(concept.popularity)} popularity and has a ${concept.learningCurve} learning curve`,
+      `It's related to ${formatList(concept.relatedTech)}`,
+      `Commonly used for ${formatList(concept.useCases)}`,
+      `It's keys features are ${formatList(concept.keyFeatures)}`,
+      `Creatd by ${concept.creator}`,
       concept.description,
+      `Word Skeleton: ${concept.name.split("").map((char, i) => {
+        if (i == 0) {
+          return char.toUpperCase()
+        }
+
+        if (char == " ") {
+          return "\xa0"
+        }
+
+        return "_"
+
+      }).join(" ")} `
     ]
 
     setHints(generatedHints)
